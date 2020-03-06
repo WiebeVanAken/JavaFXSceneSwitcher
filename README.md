@@ -35,11 +35,11 @@ public class ExampleView extends GridPane implements IEventPane
 
     public ExampleView()
     {
-        lbl_title = new Label("Example view");
-        txt_name  = new TextField("Your name here");
+	lbl_title = new Label("Example view");
+	txt_name  = new TextField("Your name here");
 
-        this.add(lbl_title, 0, 0);
-        this.add(txt_name, 0, 0);
+	this.add(lbl_title, 0, 0);
+	this.add(txt_name, 0, 0);
     }
 
     @Override
