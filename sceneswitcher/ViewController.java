@@ -42,12 +42,6 @@ public class ViewController
             System.out.println(String.format("Could not add view %s, view already exists", a_viewID));
     }
 
-    // Set the view stage for views to be hosted in
-    public static void setStage(Stage a_stage)
-    {
-        m_con.m_stage = a_stage;
-    }
-
     /*
         Show a specific view with a specific view ID
         Events don't fire if the new view cannot be shown
@@ -84,6 +78,18 @@ public class ViewController
         m_con.m_curView = a_viewKey;
         m_con.m_stage.setScene(newView.getScene());
         m_con.m_stage.show();
+    }
+
+    // Set the view stage for views to be hosted in
+    public static void setStage(Stage a_stage)
+    {
+        m_con.m_stage = a_stage;
+    }
+
+    // Get the view stage in which views are hosted
+    public static Stage getStage()
+    {
+        return m_con.m_stage;
     }
 
     // Get the view ID of the current view in focus

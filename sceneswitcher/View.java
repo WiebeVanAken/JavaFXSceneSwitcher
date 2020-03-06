@@ -14,23 +14,17 @@ public class View
         m_pane = a_pane;
     }
 
-    // Get the scene of this view
-    public Scene getScene()
+    public View(Scene a_scene)
     {
-        return m_scene;
-    }
-
-    // Get the pane of this view
-    public Pane getPane()
-    {
-        return m_pane;
+        m_scene = a_scene;
+        m_pane = (Pane) a_scene.getRoot();
     }
 
     /*
         Call a specific event on this pane.
         A pane must implement IEventPane, if it doesn't. The event is not called
         The a_eventID is equal to the function name.
-        a_params is the extra paremeters / data that has to be passed to the view
+        a_params is the extra parameters / data that has to be passed to the view
     */
     public void callEvent(String a_eventID, Object... a_params)
     {
@@ -47,5 +41,29 @@ public class View
                         ((IEventPane)m_pane).onFocusLost();
                 break;
         }
+    }
+
+    // Get the scene of this view
+    public Scene getScene()
+    {
+        return m_scene;
+    }
+
+    // Set the scene of this view
+    public void setScene(Scene a_scene)
+    {
+        m_scene = a_scene;
+    }
+
+    // Get the pane of this view
+    public Pane getPane()
+    {
+        return m_pane;
+    }
+
+    // Set the pane of this view
+    public void setPane(Pane a_pane)
+    {
+        m_pane = a_pane;
     }
 }
