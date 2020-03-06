@@ -12,12 +12,12 @@ HOW TO USE
 Example main function
 ```java
 @Override
-    public void start(Stage primaryStage) throws Exception
-    {
-        ViewController.setStage(primaryStage);
-        ViewController.addView(new View(new ExampleView(), 100, 100), "ExampleView");
-        ViewController.show("ExampleView");
-    }
+public void start(Stage primaryStage) throws Exception
+{
+	ViewController.setStage(primaryStage);
+	ViewController.addView(new View(new ExampleView(), 100, 100), "ExampleView");
+	ViewController.show("ExampleView");
+}
 ```
 
 What happens here is the following.
