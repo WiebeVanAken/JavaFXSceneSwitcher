@@ -14,9 +14,9 @@ Example main function
 @Override
 public void start(Stage primaryStage) throws Exception
 {
-ViewController.setStage(primaryStage);
-ViewController.addView(new View(new ExampleView(), 100, 100), "ExampleView");
-ViewController.show("ExampleView");
+	ViewController.setStage(primaryStage);
+	ViewController.addView(new View(new ExampleView(), 100, 100), "ExampleView");
+	ViewController.show("ExampleView");
 }
 ```
 
