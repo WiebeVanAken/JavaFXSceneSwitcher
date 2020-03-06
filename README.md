@@ -57,7 +57,10 @@ public class ExampleView extends GridPane implements IEventPane
 ```
 
 What happens here is the following:
-A simple basic JavaFX pane gets made.
-This pane also implements IEventPane. IEventPane is an interface which holds pane events.
-These events get called when a pane gains or loses focus.
-A pane does not have to implement IEventPane. If it doesn't, it doesn't work with the event system that I've made. It's entirely optional
+* A simple basic JavaFX pane gets made.
+* This pane also implements IEventPane. IEventPane is an interface which holds pane events.
+* These events get called when a pane gains or loses focus.
+* A pane does not have to implement IEventPane. If it doesn't, it doesn't work with the event system that I've made. It's entirely optional
+
+About passing data to another view
+Passing data around to another view is done by adding additional parameters to ViewController.show, this data can be accessed in the onFocusGained function in a pane.
