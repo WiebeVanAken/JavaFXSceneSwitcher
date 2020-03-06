@@ -11,7 +11,7 @@ It provides a global system for switching panes in the application.
 HOW TO USE
 Example main function
 ```java
-	@Override
+@Override
     public void start(Stage primaryStage) throws Exception
     {
         ViewController.setStage(primaryStage);
@@ -45,7 +45,7 @@ public class ExampleView extends GridPane implements IEventPane
     @Override
     public void onFocusGained(Object... a_data)
     {
-		txt_name.setText("Perensoep109");
+	txt_name.setText("Perensoep109");
     }
 
     @Override
