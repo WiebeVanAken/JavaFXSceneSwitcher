@@ -79,16 +79,19 @@ public class ViewController
         m_con.m_stage.setScene(newView.getScene());
         m_con.m_stage.show();
     }
-	
-	/*
+
+    /*
         Stop the sceneswitcher.
-        This fires the last onFocusLost event in the last pane
-    */
+        This fires the onStop event in the last pane
+     */
     public static void stop()
     {
-        m_con.m_views.get(getCurView()).callEvent("onFocusLost");
+        for (View view : m_con.m_views.values())
+        {
+            view.callEvent("onStop");
+        }
     }
-	
+
     // Set the view stage for views to be hosted in
     public static void setStage(Stage a_stage)
     {

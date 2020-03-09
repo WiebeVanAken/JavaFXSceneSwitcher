@@ -18,6 +18,12 @@ public void start(Stage primaryStage) throws Exception
 	ViewController.addView(new View(new ExampleView(), 100, 100), "ExampleView");
 	ViewController.show("ExampleView");
 }
+
+@Override
+public void stop() throws Exception
+{
+	ViewController.stop();
+}
 ```
 
 What happens here is the following.

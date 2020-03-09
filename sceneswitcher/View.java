@@ -40,6 +40,11 @@ public class View
                     if(m_pane instanceof IEventPane)
                         ((IEventPane)m_pane).onFocusLost();
                 break;
+            case "onStop":
+                if(m_pane != null)
+                    if(m_pane instanceof IEventPane)
+                        ((IEventPane)m_pane).onStop();
+                break;
         }
     }
 
