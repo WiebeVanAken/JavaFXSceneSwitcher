@@ -51,6 +51,12 @@ public class ViewController
     public static void show(String a_viewKey, Object... a_params)
     {
         // Check for errors
+        if(m_con.m_stage == null)
+        {
+            System.out.println("Could not show view" + a_viewKey + ", no stage has been set.");
+            return;
+        }
+
         if(!m_con.m_views.containsKey(a_viewKey))
         {
             System.out.println(String.format("Could not switch to view %s, key does not exist", a_viewKey));
