@@ -5,7 +5,8 @@ import sceneswitcher.IEventPane;
 
 public class TestView extends GridPane implements IEventPane {
     @Override
-    public void onFocusGained(Object... a_data) {
+    public void onFocusGained(Object... a_data)
+    {
 
     }
 

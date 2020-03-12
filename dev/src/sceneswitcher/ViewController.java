@@ -17,7 +17,7 @@ public class ViewController
         m_con = new ViewController();
     }
 
-    public ViewController()
+    private ViewController()
     {
         m_views = new HashMap<>();
     }
@@ -32,14 +32,29 @@ public class ViewController
         {
             if(a_view == null)
             {
-                System.out.println(String.format("Could not add view %s, view is null", a_viewID));
+                System.out.println(String.format("ERROR::SCENE::ADD Could not add view %s, view is null", a_viewID));
                 return;
             }
 
             m_con.m_views.put(a_viewID, a_view);
         }
         else
-            System.out.println(String.format("Could not add view %s, view already exists", a_viewID));
+            System.out.println(String.format("ERROR::SCENE::ADD Could not add view %s, view already exists", a_viewID));
+    }
+
+    /*
+        Remove a view with a specific ID from the usable views
+        A view cannot be removed if the view is the current view
+     */
+    public static void removeView(String a_viewID)
+    {
+        if(a_viewID == m_con.m_curView)
+        {
+            System.out.println(String.format("ERROR::SCENE::REMOVE Could not remove view %s, cannot remove the current view", a_viewID));
+            return;
+        }
+
+        m_con.m_views.remove(a_viewID);
     }
 
     /*
@@ -51,20 +66,26 @@ public class ViewController
     public static void show(String a_viewKey, Object... a_params)
     {
         // Check for errors
+        if(m_con.m_stage == null)
+        {
+            System.out.println(String.format("ERROR::SCENE::SHOW Could not switch to view %s, stage is null", a_viewKey));
+            return;
+        }
+
         if(!m_con.m_views.containsKey(a_viewKey))
         {
-            System.out.println(String.format("Could not switch to view %s, key does not exist", a_viewKey));
+            System.out.println(String.format("ERROR::SCENE::SHOW Could not switch to view %s, key does not exist", a_viewKey));
             return;
         }
 
         // Get all required views
-        View prevView = m_con.m_views.get(getCurView());
+        View prevView = m_con.m_views.get(m_con.m_curView);
         View newView = m_con.m_views.get(a_viewKey);
 
         // Check for errors
         if(newView == null)
         {
-            System.out.println(String.format("Could not switch to view %s, value does not exist", a_viewKey));
+            System.out.println(String.format("ERROR::SCENE::SHOW Could not switch to view %s, value does not exist", a_viewKey));
             return;
         }
 
@@ -81,9 +102,9 @@ public class ViewController
     }
 
     /*
-        Stop the sceneswitcher.
-        This fires the onStop event in the last pane
-     */
+        Stop the scene switcher
+        This fires the onStop event in all the panes in the app
+    */
     public static void stop()
     {
         for (View view : m_con.m_views.values())
@@ -108,8 +129,14 @@ public class ViewController
         return m_con.m_stage;
     }
 
+    // Get the current view in focus
+    public static View getCurView()
+    {
+        return m_con.m_views.get(m_con.m_curView);
+    }
+
     // Get the view ID of the current view in focus
-    public static String getCurView()
+    public static String getCurViewKey()
     {
         return m_con.m_curView;
     }
