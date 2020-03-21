@@ -66,6 +66,12 @@ public class ViewController
     public static void show(String a_viewKey, Object... a_params)
     {
         // Check for errors
+        if(a_viewKey == m_con.m_curView)
+        {
+            System.out.println("ERROR::SCENE::SHOW Could not switch to the current view");
+            return;
+        }
+
         if(m_con.m_stage == null)
         {
             System.out.println(String.format("ERROR::SCENE::SHOW Could not switch to view %s, stage is null", a_viewKey));
